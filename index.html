@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Events</title>
+      <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<script type="text/x-handlebars">
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li> {{#link-to 'events'}}List of Events{{/link-to}}</li>
+            </ul>
+                    {{#if session.isAuthenticated}}
+                        <a {{ action 'invalidateSession' }} class="btn btn-danger navbar-btn navbar-left" >Logout</a>
+                        <p class='navbar-right'>Logged in as {{session.userFn}} {{session.userLn}} </p
+                    {{else}}
+                        {{#link-to 'login' class="btn navbar-btn navbar-left" }}Login{{/link-to}}
+                    {{/if}}
+    </div>
+</nav>
+    {{outlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="events">
+<div class="span6">
+    <table class="table table-striped table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Event</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#each model}}
+            <tr>
+                <td> {{date}} </td>
+                <td> {{title}} </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+<div class="span4">
+    {{outlet}}
+</div>
+</script>
+
+
+<script type="text/x-handlebars" data-template-name="login">
+      <div class="page-header">
+      <h1>Login</h1>
+      </div>
+    <div>
+      <a href="#" {{action "authenticate"}}>Login using Google</a>
+    </div>
+
+      {{#if errorMessage}}
+        <div class="alert alert-danger">
+          <p> 
+                <strong>Login failed:</strong> 
+                <code>{{errorMessage}}</code>
+          </p>
+        </div>
+      {{/if}}
+</script>
+
+    
+<script src="jquery.js"></script>
+<script src="handlebars.js"></script>
+<script src="ember.js"></script>
+<script src="ember-simple-auth.js"></script>
+<script src="ember-oauth2.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Authorize</title> 
+    <script>
+      var hash = window.location.hash;
+      console.log("hash");
+      window.opener.App.oauth.trigger('redirect', hash);
+      window.close();
+    </script>
+  </head>
+</html>
