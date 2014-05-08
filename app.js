@@ -69,6 +69,8 @@
 
     Ember.OAuth2.config = {
         google: {
+            // CHANGE the clientID below to a valid one from your own account at
+            // console.developers.google.com -> your_project -> APIs&oauth -> Credentials -> Create new Client ID
             clientId: "966028013244-i05fkt400pl0b5c8upnfi0dn304kk4b6.apps.googleusercontent.com",
             authBaseUri: 'https://accounts.google.com/o/oauth2/auth',
             redirectUri: 'http://127.0.0.1:5000/redirect.html',
